@@ -1,0 +1,29 @@
+
+user:
+  restart: always
+  image: user
+  ports:
+    - "3000:3000"
+  environment:
+    - MESSAGING_LOGIN=admin
+    - MESSAGING_PASSWORD=admin 
+    
+    
+  links:
+    
+  
+  
+    - activemq
+  
+
+activemq:
+  restart: always
+  image: webcenter/activemq
+  ports:
+    - "61613:61613"
+  environment:
+    - ACTIVEMQ_ADMIN_LOGIN=admin
+    - ACTIVEMQ_ADMIN_PASSWORD=admin
+
+
+
