@@ -2,8 +2,9 @@ package api
 
 import (
 	"encoding/json"
-	"net/http"
 	"fmt"
+	"net/http"
+
 	"github.com/Sirupsen/logrus"
 )
 

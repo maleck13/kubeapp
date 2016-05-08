@@ -2,15 +2,17 @@ package cmd
 
 import (
 	"log"
+
 	"github.com/Sirupsen/logrus"
 	"github.com/codegangsta/cli"
 	"github.com/maleck13/kubeapp/auth/api"
 	"github.com/maleck13/kubeapp/auth/config"
-       
+
 	"github.com/maleck13/kubeapp/auth/data"
-       
+
 	"net/http"
 	_ "net/http/pprof"
+
 	"github.com/maleck13/kubeapp/auth/domain"
 )
 
@@ -42,16 +44,15 @@ func ServeCommand() cli.Command {
 func serve(context *cli.Context) {
 	config.SetGlobalConfig(configPath)
 	logrus.SetFormatter(&logrus.JSONFormatter{})
-	
-        
+
 	data.InitStomp(config.Conf.GetStomp())
 	defer data.DestroyStomp()
 	loginService := &domain.LoginService{}
-	if err := loginService.StartSubscribers(); err != nil{
+	if err := loginService.StartSubscribers(); err != nil {
 		logrus.Fatal("failed to set up subcribers for login service")
 	}
 	defer loginService.StopSubscribers()
-	
+
 	router := api.NewRouter()
 	if config.Conf.GetPProfEnabled() {
 		go func() {
@@ -63,4 +64,3 @@ func serve(context *cli.Context) {
 		logrus.Fatal(err)
 	}
 }
-

@@ -2,13 +2,14 @@ package api_test
 
 import (
 	"encoding/json"
-	"github.com/stretchr/testify/assert"
-	"github.com/maleck13/kubeapp/user/api"
-	"github.com/maleck13/kubeapp/user/config"
 	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
 	"testing"
+
+	"github.com/maleck13/kubeapp/user/api"
+	"github.com/maleck13/kubeapp/user/config"
+	"github.com/stretchr/testify/assert"
 )
 
 //todo add tests for other index methods
