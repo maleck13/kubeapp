@@ -30,10 +30,6 @@ func NewRouter() http.Handler {
 		negroni.Wrap(apiRouter),
 	))
 
-	apiRouter.HandleFunc("/", RouteErrorHandler(IndexHandler)).Methods("GET")
-
-	apiRouter.HandleFunc("/stomp", RouteErrorHandler(IndexStomp)).Methods("GET", "POST")
-
 	//wire up middleware and router
 	n.UseHandler(r)
 

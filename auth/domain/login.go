@@ -45,6 +45,7 @@ func handleLogin(frame stompy.Frame) {
 	var response *LoginResponse
 	responseHeaders := stompy.StompHeaders{}
 	responseHeaders["correllationID"] = correlationId
+	responseHeaders["content-type"] = "application/json"
 	if err := json.Unmarshal(frame.Body, &message); err != nil {
 		response = &LoginResponse{}
 		logrus.Error("handleLogin: failed to decode message ", err)
@@ -66,7 +67,7 @@ func handleLogin(frame stompy.Frame) {
 		logrus.Error("handleLogin: failed to encode response message ", err)
 		return
 	}
-	if err := sc.Publish(replyTo, "application/json", marshalResponse, responseHeaders, nil); err != nil {
+	if err := sc.Publish(replyTo, marshalResponse, responseHeaders, nil); err != nil {
 		//failed to publish
 	}
 }

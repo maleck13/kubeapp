@@ -35,8 +35,8 @@
 		},
 		{
 			"ImportPath": "github.com/maleck13/stompy",
-			"Comment": "0.1.0-5-g3abcd3d",
-			"Rev": "3abcd3d767c9cfc00be1000a28fad8626b22f5a7"
+			"Comment": "0.2.0-5-gabd6718",
+			"Rev": "abd671836dc6dbeb11f00b1e98fb4be2651bb382"
 		},
 		{
 			"ImportPath": "github.com/nu7hatch/gouuid",
